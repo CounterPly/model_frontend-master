@@ -1,0 +1,346 @@
+<html lang="en-us">
+
+<head>
+    <!-- Meta -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta charset='UTF=8'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"
+          media="all">
+    <title>Bentley Assignment</title>
+    <!-- Meta -->
+
+    <!-- CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <style type='text/css'>
+        h1 {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        span {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        span {
+            font-family: 'Lato', sans-serif;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1em;
+            background-color: #8394AF;
+            text-decoration: none;
+            color: white;
+            width: 100px;
+            height: 50px;
+        }
+
+        .item {
+            width: auto;
+            height: 100px;
+        }
+
+        .item img {
+            transition: all 0.20s;
+        }
+
+        .item:hover img {
+            transform: scale(2.0);
+        }
+    </style>
+    <!-- CSS -->
+</head>
+
+<!-- JavaScript -->
+<script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+<link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css'>
+<script src='//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js'></script>
+<!-- JavaScript -->
+
+
+<div class='container'>
+    <div class="container">
+        <form id='submit_params' method="POST" action="{{ url_for('submit_new_profile') }}">
+            <div class="form-group">
+                <table class='table'>
+                    <tr>
+                        <td>
+                            <div>
+                                <h1>NIH Return to Workplace Prediction</h1>
+                            </div>
+                        </td>
+
+                        <td>
+                            <div>
+                                <!-- Banner -->
+                                <img src='static/images/front_end_header.png' alt='banner'
+                                     style='padding:1px; border:1px solid #021a40; width: 650px; height: auto'>
+                                <!-- Banner -->
+                            </div>
+                        </td>
+
+                        <td>
+                            <h1>NIH Main Campus Buildings Map</h1>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <table class='table'>
+
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Status
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+
+                                            <select class='selectpicker' name='selected_status'>
+                                                <option
+                                                        value='{{ selected_status }}' selected>{{ selected_status }}
+                                                </option>
+                                                <option value='Parttime'>
+                                                    Parttime
+                                                </option>
+                                                <option value='Fulltime'>
+                                                    Fulltime
+                                                </option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Title</label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <select class='selectpicker' name='selected_title'>
+                                                <option value='{{ selected_title }}' selected>
+                                                    {{ selected_title }}
+                                                </option>
+                                                <option value='Dr'>Dr</option>
+                                                <option value='Ms'>Ms</option>
+                                                <option value='Miss'>Miss</option>
+                                                <option value='Mr'>Mr</option>
+                                                <option value='Mrs'>Mrs</option>
+                                                <option value='Unknown'>Unknown</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Publications</label>
+                                    </td>
+                                    <td>
+                                        <label for='publication'></label>
+                                        <input type='number' class='form-control' id='publication'
+                                               placeholder='Enter publication' name='selected_publication'
+                                               value='{{ selected_publication }}'>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Conferences
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <label>
+                                            <select class='selectpicker' name='selected_conferences'>
+                                                <option value='{{ selected_conferences }}' selected>
+                                                    {{ selected_conferences }}
+                                                </option>
+                                                {% for conferences in range(0,41) %}
+                                                    <option>{{ conferences }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Expertise
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <select class='selectpicker' name='selected_expertise'>
+                                                <option value='{{ selected_expertise }}'
+                                                        selected>{{ selected_expertise }}
+                                                </option>
+                                                <option value='Cancer'>Cancer</option>
+                                                <option value='Infectious Diseases'>Infectious Diseases</option>
+                                                <option value='Bioinformatics'>Bioinformatics</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Building</label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <select class='selectpicker' name='selected_building'>
+                                                <option value='{{ selected_building }}' selected>
+                                                    {{ selected_building }}
+                                                </option>
+                                                <option>Building 10</option>
+                                                <option>Building 14</option>
+                                                <option>Building 35</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Institute
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+                                            <select class='selectpicker' name='selected_institute'>
+                                                <option value='{{ selected_institute }}' selected>
+                                                    {{ selected_institute }}
+                                                </option>
+                                                <option>NCI</option>
+                                                <option>NEI</option>
+                                                <option>NHLBI</option>
+                                                <option>NHGRI</option>
+                                                <option>NIA</option>
+                                                <option>NIAID</option>
+                                                <option>NIMH</option>
+                                                <option>Unknown</option>
+                                            </select>
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><label>Number of Post-Doctoral Fellows</label></td>
+                                    <td>
+                                        <label>
+
+                                            <select class='selectpicker' name='selected_pfellows'>
+
+                                                <option value='{{ selected_pfellows }}' selected>
+                                                    {{ selected_pfellows }}
+                                                </option>
+
+                                                {% for pfellows in range(0,10) %}
+                                                    <option>
+                                                        {{ pfellows }}
+                                                    </option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>
+                                            Number of Direct Reports
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        <label>
+
+                                            <select class='selectpicker' name='selected_preports'>
+
+                                                <option value='{{ selected_preports }}' selected>
+                                                    {{ selected_preports }}
+                                                </option>
+
+                                                {% for preports in range(0,10) %}
+                                                    <option>
+                                                        {{ preports }}
+                                                    </option>
+                                                {% endfor %}
+
+                                            </select>
+
+                                        </label>
+                                    </td>
+                                </tr>
+
+                                <tr></tr>
+
+                                <tr>
+                                    <td>
+                                        <button class="btn cta hvr-float-shadow hvr-icon-grow" type="submit"
+                                                style="font-family: 'Lato', sans-serif; font-weight: 400;">
+                                            Predict <span class="fas fa-microscope" style="font-style: italic;"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <td>{{ model_results }}
+                            <br>
+                            {{ model_plot }}
+                        </td>
+
+                        <td>
+                            <div>
+                                <h4>
+                                    <span style="font-weight: bold;
+                                    font-family: 'Lato', sans-serif;
+                                    text-align: center;">
+                                        Buildings Key (Hover to Zoom)
+                                    </span>
+                                </h4>
+                            </div>
+
+                            <!-- Campus Map -->
+                            <div class="item">
+                                <img src='static/images/main_campus.png'
+                                     alt='building locations'
+                                     style='padding:1px; border:1px solid #021a40; width: auto; height: 400px'>
+                            </div>
+                            <!-- Map End -->
+
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+</html>
